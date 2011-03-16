@@ -26,8 +26,9 @@ namespace DataExperiment
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        private static Brush[] colors = { Brushes.DarkKhaki, Brushes.Khaki, Brushes.LavenderBlush, Brushes.LightCoral };
+        // TODO: Implement this so that infinite classes can be added.
+      private static Brush[] colors = { Brushes.DarkKhaki, Brushes.Khaki, Brushes.LavenderBlush, Brushes.LightCoral,
+                                          Brushes.Aquamarine, Brushes.BlanchedAlmond, Brushes.Cornsilk, Brushes.Gainsboro };
 
         private Schedule _schedule = new Schedule();
         private DateTime _start = new DateTime();
@@ -135,7 +136,7 @@ namespace DataExperiment
                     TextBlock CourseLabel = MapBlock( time );
                     CourseLabel.Text = course.Name + "\n" + course.LongName;
                     CourseLabel.TextWrapping = TextWrapping.Wrap;
-                    CourseLabel.Background = colors[Schedule.Courses.IndexOf( course )];
+                    CourseLabel.Background = colors[Schedule.Courses.IndexOf( course ) % colors.Count()];
                     CourseLabel.Padding = new Thickness( 5, 5, 5, 5 );
                     ScheduleGrid.Children.Add( CourseLabel );
                 }
