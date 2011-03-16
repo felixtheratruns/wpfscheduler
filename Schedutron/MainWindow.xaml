@@ -1,0 +1,67 @@
+﻿<Window Name="MainWindow1"  x:Class="DataExperiment.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:local="clr-namespace:DataExperiment"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="600" Width="800">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="coursesTakenSource" ObjectType="{x:Type local:Schedule}" />
+        <DataTemplate x:Key="coursesTakenTemplate">
+            <ListBoxItem Content="{Binding Path=DisplayName}" />
+        </DataTemplate>
+        <ObjectDataProvider x:Key="coursesAvailableSource" ObjectType="{x:Type local:Schedule}" />
+        <DataTemplate x:Key="coursesAvailableTemplate">
+            <ListBoxItem Content="{Binding Path=DisplayName}" />
+        </DataTemplate>
+        <Style x:Key="OptionLabel" TargetType="Label">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Width" Value="120" />
+            <Setter Property="Margin" Value="5,0,5,0" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions >
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid Name="ScheduleGrid" Grid.Column="0">
+            
+        </Grid>
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <Label FontFamily="Calibri" FontSize="32" Content="Schedule Settings">
+            </Label>
+            <StackPanel Orientation="Horizontal">
+                <Label Style="{StaticResource OptionLabel}" Content="Start Time" />
+                <TextBox Name="StartTime" Width="96" Margin="5,5,5,1" Height="20"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Style="{StaticResource OptionLabel}" Content="End Time" />
+                <TextBox Name="EndTime" Width="96" Margin="5,5,5,1" Height="20"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Style="{StaticResource OptionLabel}" Content="Interval" />
+                <TextBox Name="Interval" Width="96" Margin="5,5,5,1" Height="20"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button FontFamily="Calibri" Content="Restore Defaults" Width="128" HorizontalAlignment="Left" Margin="30,10,5,5"/>
+                <Button FontFamily="Calibri" Content="Refresh" Width="64" HorizontalAlignment="Right" FontWeight="Bold" Margin="20,10,5,5" Click="Button_Click" />
+            </StackPanel>
+            <Label FontFamily="Calibri" FontSize="16" Margin="0,0,0,0" Content="Courses Available" Width="192" HorizontalAlignment="Left" />
+            <StackPanel Orientation="Horizontal">
+                <ListBox IsSynchronizedWithCurrentItem="True" Name="AvailableList" Margin="10,0,10,5" Width="192" ItemsSource="{Binding Available}" ItemTemplate="{StaticResource coursesAvailableTemplate}">
+                </ListBox>
+                <Button Name="AddButton" Width="20" Content="+" Click="AddButton_Click" />
+            </StackPanel>
+            <Label FontFamily="Calibri" FontSize="16" Margin="0,0,0,0" Content="Courses Scheduled" Width="192" HorizontalAlignment="Left" />
+            <StackPanel Orientation="Horizontal">
+                <ListBox IsSynchronizedWithCurrentItem="True" Name="ScheduledList" Margin="10,0,10,5" Width="192" ItemsSource="{Binding Courses}" ItemTemplate="{StaticResource coursesTakenTemplate}">
+                </ListBox>
+                <Button Name="RemoveButton" Width="20" Content="-" Click="RemoveButton_Click" />
+            </StackPanel>
+            <Button Name="CatalogButton" Margin="10,10,10,5" Content="Catalog..." Width="100" HorizontalAlignment="Left" Click="CatalogButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

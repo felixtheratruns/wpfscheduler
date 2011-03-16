@@ -1,0 +1,36 @@
+﻿<Window x:Class="DataExperiment.EditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EditWindow" Height="300" Width="300">
+<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label Content="Course Number"  Grid.Row="0" Grid.Column="0" />
+        <Label Content="Course Name"    Grid.Row="1" Grid.Column="0" />
+        <Label Content="Days"           Grid.Row="2" Grid.Column="0" />
+        <Label Content="Start Time"     Grid.Row="3" Grid.Column="0" />
+        <Label Content="End Time"       Grid.Row="4" Grid.Column="0" />
+        <Label Content="Credit Hours"   Grid.Row="5" Grid.Column="0" />
+        <TextBox Name="CourseNumText"   Grid.Row="0" Grid.Column="1" />
+        <TextBox Name="CourseNameText"  Grid.Row="1" Grid.Column="1" />
+        <TextBox Name="DaysText"        Grid.Row="2" Grid.Column="1" />
+        <TextBox Name="StartText"       Grid.Row="3" Grid.Column="1" />
+        <TextBox Name="EndText"         Grid.Row="4" Grid.Column="1" />
+        <TextBox Name="HoursText"     Grid.Row="5" Grid.Column="1" />
+        <StackPanel Grid.Row="6" Grid.Column="2" Orientation="Horizontal" Margin="5,5,5,5">
+            <Button Content="Ok"        Width="60" Height="24" Margin="2,2,2,2" Click="OkButton_Click" />
+            <Button Content="Cancel"    Width="60" Height="24" Margin="2,2,2,2" Click="CancelButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
